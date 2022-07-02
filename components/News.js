@@ -1,12 +1,11 @@
 import React from "react";
 import { Text, Link, HStack, Center, Heading, Switch, useColorMode, NativeBaseProvider, extendTheme, Container } from "native-base";
 // import NavigationTab from "./components/NavigationTab";
-import News from "./components/News";
+import NewsItems from "./NewsItems";
 
-export default function App() {
+export default function News() {
   return (
-    <NativeBaseProvider>
-      {/* <NavigationTab /> */}
+    <>
       <Center>
         <Container>
           <Heading>
@@ -14,7 +13,7 @@ export default function App() {
           </Heading>
         </Container>
       </Center>
-      <News />
-    </NativeBaseProvider>
+      <NewsItems />
+    </>
   );
 }
