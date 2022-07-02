@@ -1,6 +1,6 @@
 // import React from "react";
 import News from "./components/News";
-import { NativeBaseProvider } from "native-base";
+import { NativeBaseProvider, Box } from "native-base";
 import * as React from "react";
 import { Button } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
@@ -10,13 +10,9 @@ function HomeScreen({ navigation }) {
   return (
     <>
       <Button title="Business" onPress={() => navigation.navigate("Business")} />
-      <Button />
       <Button title="Healthscience" onPress={() => navigation.navigate("Healthscience")} />
-      <Button />
       <Button title="Sports" onPress={() => navigation.navigate("Sports")} />
-      <Button />
       <Button title="Technology" onPress={() => navigation.navigate("Technology")} />
-      <Button />
       <News />
     </>
   );
@@ -25,13 +21,9 @@ function BusinessScreen({ navigation }) {
   return (
     <>
       <Button title="Home" onPress={() => navigation.navigate("Home")} />
-      <Button />
       <Button title="Healthscience" onPress={() => navigation.navigate("Healthscience")} />
-      <Button />
       <Button title="Sports" onPress={() => navigation.navigate("Sports")} />
-      <Button />
       <Button title="Technology" onPress={() => navigation.navigate("Technology")} />
-      <Button />
       <News />
     </>
   );
@@ -40,13 +32,9 @@ function HealthscienceScreen({ navigation }) {
   return (
     <>
       <Button title="Home" onPress={() => navigation.navigate("Home")} />
-      <Button />
       <Button title="Business" onPress={() => navigation.navigate("Business")} />
-      <Button />
       <Button title="Sports" onPress={() => navigation.navigate("Sports")} />
-      <Button />
       <Button title="Technology" onPress={() => navigation.navigate("Technology")} />
-      <Button />
       <News />
     </>
   );
@@ -55,13 +43,9 @@ function SportsScreen({ navigation }) {
   return (
     <>
       <Button title="Home" onPress={() => navigation.navigate("Home")} />
-      <Button />
       <Button title="Business" onPress={() => navigation.navigate("Business")} />
-      <Button />
       <Button title="Healthscience" onPress={() => navigation.navigate("Healthscience")} />
-      <Button />
       <Button title="Technology" onPress={() => navigation.navigate("Technology")} />
-      <Button />
       <News />
     </>
   );
@@ -70,14 +54,10 @@ function SportsScreen({ navigation }) {
 function TechnologyScreen({ navigation }) {
   return (
     <>
-      <Button size="sm" title="Home" onPress={() => navigation.navigate("Home")} />
-      <Button />
+      <Button title="Home" onPress={() => navigation.navigate("Home")} />
       <Button title="Business" onPress={() => navigation.navigate("Business")} />
-      <Button />
       <Button title="Healthscience" onPress={() => navigation.navigate("Healthscience")} />
-      <Button />
       <Button title="Sports" onPress={() => navigation.navigate("Sports")} />
-      <Button />
       <News />
     </>
   );
