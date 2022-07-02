@@ -1,32 +1,47 @@
 import React, { useEffect, useState } from "react";
-import { Text, HStack, Heading, Box, Stack } from "native-base";
+import { Text, Center, Heading, Box, Stack } from "native-base";
 // import NavigationTab from "./components/NavigationTab";
 import NewsItems from "./NewsItems";
 import InfiniteScroll from "react-infinite-scroll-component";
+import PropTypes from "prop-types";
 import Spin from "./Spin";
 
-export default function News() {
+export default function News(props) {
+  //   News.defaultProps = {
+  //     country: "in",
+  //     pageSize: 15,
+  //     category: "general",
+  //   };
+  //   News.propTypes = {
+  //     country: PropTypes.string,
+  //     pageSize: PropTypes.number,
+  //     category: PropTypes.string,
+  //   };
   let loading = true;
   const rawdata = require("../rawdata.json");
   //   const articles = rawdata.articles;
+  const [page, setPage] = useState(1);
   const [articles, setArticles] = useState([]);
-  const [totalArticles, setTotalArticles] = useState(0);
-  const url = `
-  https://newsapi.org/v2/top-headlines?country=us&category=business&apiKey=c017e5b978b74f8b925d60c9d5a3c7c8`;
 
-  const getData = async () => {
-    let response = await fetch(url);
-    let parseData = await response.json();
-    setArticles(parseData.articles);
-    setTotalArticles(parseData.totalResults);
-  };
+  const [totalArticles, setTotalArticles] = useState(0);
+  console.log(props.category);
+  //   const url = `
+  //   https://newsapi.org/v2/top-headlines?country=${props.country}&category=${props.category}&apiKey=${props.apikey}&page=${page}&pageSize=${props.pageSize}`;
+
+  //   const getData = async () => {
+  //     let response = await fetch(url);
+  //     let parseData = await response.json();
+  //     setArticles(parseData.articles);
+  //     setTotalArticles(parseData.totalResults);
+  //   };
   useEffect(() => {
-    getData();
+    //   getData();
+    setArticles(rawdata.articles);
   }, []);
 
   loading = false;
-  console.log(articles);
-  document.title = "NewsAnts";
+  //   console.log(articles);
+  //   document.title = "NewsAnts";
 
   const fetchData = () => {};
   return (
@@ -42,9 +57,11 @@ export default function News() {
         hasMore={articles.length < totalArticles}
         loader={<Spin />}
         endMessage={
-          <p>
-            <b>Yay! You have seen it all</b>
-          </p>
+          <Center>
+            <p>
+              <b>Yay! You have seen it all</b>
+            </p>
+          </Center>
         }
       >
         <Stack flexWrap="wrap" flexDirection={"row"} justifyContent="center">

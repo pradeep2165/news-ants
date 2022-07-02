@@ -26,9 +26,8 @@ export default function NewsItems(props) {
         }}
       >
         <Box>
-          <AspectRatio w="100%" ratio={16 / 9}>
-            <Image source={news.urlToImage} alt="image" />
-          </AspectRatio>
+          <Image source={{ uri: news.urlToImage }} alt="image" width="100%" height="200" />
+
           <Center
             bg="violet.500"
             _dark={{
