@@ -1,6 +1,6 @@
 import React from "react";
 
-import { VStack, Box, Divider, Image, AspectRatio, Stack, HStack, Text, Center, Heading } from "native-base";
+import { Link, Box, Button, Image, AspectRatio, Stack, HStack, Text, Center, Heading } from "native-base";
 // import NavigationTab from "./components/NavigationTab";
 
 export default function NewsItems(props) {
@@ -9,7 +9,6 @@ export default function NewsItems(props) {
     <Box alignItems="center" mt="2" mx="2">
       <Box
         maxW="80"
-        maxHeight={"400"}
         rounded="lg"
         overflow="hidden"
         borderColor="coolGray.200"
@@ -45,7 +44,7 @@ export default function NewsItems(props) {
             px="3"
             py="1.5"
           >
-            PHOTOS
+            {news.source.name ? news.source.name : ""}
           </Center>
         </Box>
         <Stack p="4" space={3}>
@@ -76,11 +75,16 @@ export default function NewsItems(props) {
                 }}
                 fontWeight="400"
               >
-                6 mins ago
+                By {news.author ? news.author : "Unkhow"} on {news.publishedAt ? new Date(news.publishedAt).toGMTString() : ""}
               </Text>
             </HStack>
           </HStack>
         </Stack>
+        <Link href={news.url} mx="2" my="2">
+          <Button size="sm" bg="dark.200">
+            More...
+          </Button>
+        </Link>
       </Box>
     </Box>
   );

@@ -1,20 +1,6 @@
 // import React from "react";
 import News from "./components/News";
-import { NativeBaseProvider, Box } from "native-base";
-import NavigationTab from "./components/NavigationTab";
-// import Test from "./components/test";
-
-// export default function App() {
-//   return (
-//     <NativeBaseProvider>
-//       <Test />
-//       <NavigationTab />
-//       <News />
-//     </NativeBaseProvider>
-//   );
-// }
-// In App.js in a new project
-
+import { NativeBaseProvider } from "native-base";
 import * as React from "react";
 import { Button } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
@@ -84,7 +70,7 @@ function SportsScreen({ navigation }) {
 function TechnologyScreen({ navigation }) {
   return (
     <>
-      <Button title="Home" onPress={() => navigation.navigate("Home")} />
+      <Button size="sm" title="Home" onPress={() => navigation.navigate("Home")} />
       <Button />
       <Button title="Business" onPress={() => navigation.navigate("Business")} />
       <Button />
@@ -99,7 +85,7 @@ function TechnologyScreen({ navigation }) {
 
 const Stack = createNativeStackNavigator();
 
-function Test() {
+function App() {
   return (
     <NativeBaseProvider>
       <NavigationContainer>
@@ -115,4 +101,4 @@ function Test() {
   );
 }
 
-export default Test;
+export default App;
