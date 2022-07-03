@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { Text, Center, Heading, Box, Stack, Select, CheckIcon } from "native-base";
-// import NavigationTab from "./components/NavigationTab";
 import NewsItems from "./NewsItems";
 import InfiniteScroll from "react-infinite-scroll-component";
 import Spin from "./Spin";
@@ -15,20 +14,18 @@ export default function News(props) {
   const url = `
       https://newsapi.org/v2/top-headlines?country=${props.country}&category=${props.category}&apiKey=${props.apikey}&page=${page}&pageSize=${props.pageSize}`;
 
-  // const getData = async () => {
-  // setLoading(true);
-  //   let response = await fetch(url);
-  //   let parseData = await response.json();
-  //   setArticles(articles.concat(parseData.articles));
-  //   setLoading(false);
-  //   setTotalArticles(parseData.totalResults);
-  // };
+  const getData = async () => {
+    setLoading(true);
+    let response = await fetch(url);
+    let parseData = await response.json();
+    setArticles(articles.concat(parseData.articles));
+    setLoading(false);
+    setTotalArticles(parseData.totalResults);
+  };
   useEffect(() => {
-    //   getData();
-    setArticles(rawdata.articles);
-  }, []);
-  //   console.log(articles);
-  //   document.title = "NewsAnts";
+    getData();
+    // setArticles(rawdata.articles);
+  }, [page]);
 
   const fetchData = () => {
     setPage(page + 1);
@@ -36,8 +33,8 @@ export default function News(props) {
 
   return (
     <Box>
-      <Heading textAlign="center" bg="dark.100" p="3" color="white">
-        <Text> NewsAnts</Text>
+      <Heading textAlign="center" p="3" mt="2">
+        <Text> Top {props.category.charAt(0).toUpperCase() + props.category.slice(1)} - Headlines on NewsAnts</Text>
       </Heading>
       <Center>
         <Box w="3/4" maxW="300" mt="4">
@@ -52,6 +49,7 @@ export default function News(props) {
             }}
             mt={1}
             onValueChange={(x) => props.changeCounty(x)}
+            p="4"
           >
             <Select.Item label="India" value="in" />
             <Select.Item label="USA" value="us" />
@@ -69,16 +67,15 @@ export default function News(props) {
         loader={<Spin />}
         endMessage={
           <Center>
-            <p>
-              <b>Yay! You have seen it all</b>
-            </p>
+            <Text>Yay! You have seen it all</Text>
           </Center>
         }
       >
         <Stack flexWrap="wrap" flexDirection={"row"} justifyContent="center">
-          {articles.map((items, index) => {
-            return <NewsItems news={items} key={index} />;
-          })}
+          {articles &&
+            articles.map((items, index) => {
+              return <NewsItems news={items} key={index} />;
+            })}
         </Stack>
       </InfiniteScroll>
     </Box>
