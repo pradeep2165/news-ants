@@ -5,74 +5,80 @@ import * as React from "react";
 import { Button } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
-const country = "us";
-const apikey = "jouoijlj909i090";
-
-function HomeScreen({ navigation }) {
-  return (
-    <>
-      <Button title="Home" onPress={() => navigation.push("Home")} />
-      <Button title="Business" onPress={() => navigation.navigate("Business")} />
-      <Button title="Healthscience" onPress={() => navigation.navigate("Healthscience")} />
-      <Button title="Sports" onPress={() => navigation.navigate("Sports")} />
-      <Button title="Technology" onPress={() => navigation.navigate("Technology")} />
-      <News apikey={apikey} country={country} category="general" key={"general"} />
-    </>
-  );
-}
-function BusinessScreen({ navigation }) {
-  return (
-    <>
-      <Button title="Home" onPress={() => navigation.navigate("Home")} />
-      <Button title="Business" onPress={() => navigation.push("Business")} />
-      <Button title="Healthscience" onPress={() => navigation.navigate("Healthscience")} />
-      <Button title="Sports" onPress={() => navigation.navigate("Sports")} />
-      <Button title="Technology" onPress={() => navigation.navigate("Technology")} />
-      <News apikey={apikey} country={country} category="business" />
-    </>
-  );
-}
-function HealthscienceScreen({ navigation }) {
-  return (
-    <>
-      <Button title="Home" onPress={() => navigation.navigate("Home")} />
-      <Button title="Business" onPress={() => navigation.navigate("Business")} />
-      <Button title="Healthscience" onPress={() => navigation.push("Healthscience")} />
-      <Button title="Sports" onPress={() => navigation.navigate("Sports")} />
-      <Button title="Technology" onPress={() => navigation.navigate("Technology")} />
-      <News apikey={apikey} country={country} category="healthscience" />
-    </>
-  );
-}
-function SportsScreen({ navigation }) {
-  return (
-    <>
-      <Button title="Home" onPress={() => navigation.navigate("Home")} />
-      <Button title="Business" onPress={() => navigation.navigate("Business")} />
-      <Button title="Healthscience" onPress={() => navigation.navigate("Healthscience")} />
-      <Button title="Sports" onPress={() => navigation.push("Sports")} />
-      <Button title="Technology" onPress={() => navigation.navigate("Technology")} />
-      <News apikey={apikey} country={country} category="sports" />
-    </>
-  );
-}
-
-function TechnologyScreen({ navigation }) {
-  return (
-    <>
-      <Button title="Home" onPress={() => navigation.navigate("Home")} />
-      <Button title="Business" onPress={() => navigation.navigate("Business")} />
-      <Button title="Healthscience" onPress={() => navigation.navigate("Healthscience")} />
-      <Button title="Sports" onPress={() => navigation.navigate("Sports")} />
-      <Button title="Technology" onPress={() => navigation.push("Technology")} />
-      <News apikey={apikey} country={country} category="technology" />
-    </>
-  );
-}
-
-const Stack = createNativeStackNavigator();
 
 function App() {
+  const [country, setCountry] = React.useState("in");
+  let pageSize = 18;
+  const changeCounty = (e) => {
+    setCountry(e);
+  };
+
+  const apikey = "017e5b978b74f8b925d60c9d5a3c7c8";
+
+  function HomeScreen({ navigation }) {
+    return (
+      <>
+        <Button title="Home" onPress={() => navigation.push("Home")} />
+        <Button title="Business" onPress={() => navigation.navigate("Business")} />
+        <Button title="Healthscience" onPress={() => navigation.navigate("Healthscience")} />
+        <Button title="Sports" onPress={() => navigation.navigate("Sports")} />
+        <Button title="Technology" onPress={() => navigation.navigate("Technology")} />
+        <News apikey={apikey} country={country} category="general" key={"general"} changeCounty={changeCounty} pageSize={pageSize} />
+      </>
+    );
+  }
+  function BusinessScreen({ navigation }) {
+    return (
+      <>
+        <Button title="Home" onPress={() => navigation.navigate("Home")} />
+        <Button title="Business" onPress={() => navigation.push("Business")} />
+        <Button title="Healthscience" onPress={() => navigation.navigate("Healthscience")} />
+        <Button title="Sports" onPress={() => navigation.navigate("Sports")} />
+        <Button title="Technology" onPress={() => navigation.navigate("Technology")} />
+        <News apikey={apikey} country={country} category="business" pageSize={pageSize} />
+      </>
+    );
+  }
+  function HealthscienceScreen({ navigation }) {
+    return (
+      <>
+        <Button title="Home" onPress={() => navigation.navigate("Home")} />
+        <Button title="Business" onPress={() => navigation.navigate("Business")} />
+        <Button title="Healthscience" onPress={() => navigation.push("Healthscience")} />
+        <Button title="Sports" onPress={() => navigation.navigate("Sports")} />
+        <Button title="Technology" onPress={() => navigation.navigate("Technology")} />
+        <News apikey={apikey} country={country} category="healthscience" pageSize={pageSize} />
+      </>
+    );
+  }
+  function SportsScreen({ navigation }) {
+    return (
+      <>
+        <Button title="Home" onPress={() => navigation.navigate("Home")} />
+        <Button title="Business" onPress={() => navigation.navigate("Business")} />
+        <Button title="Healthscience" onPress={() => navigation.navigate("Healthscience")} />
+        <Button title="Sports" onPress={() => navigation.push("Sports")} />
+        <Button title="Technology" onPress={() => navigation.navigate("Technology")} />
+        <News apikey={apikey} country={country} category="sports" pageSize={pageSize} />
+      </>
+    );
+  }
+
+  function TechnologyScreen({ navigation }) {
+    return (
+      <>
+        <Button title="Home" onPress={() => navigation.navigate("Home")} />
+        <Button title="Business" onPress={() => navigation.navigate("Business")} />
+        <Button title="Healthscience" onPress={() => navigation.navigate("Healthscience")} />
+        <Button title="Sports" onPress={() => navigation.navigate("Sports")} />
+        <Button title="Technology" onPress={() => navigation.push("Technology")} />
+        <News apikey={apikey} country={country} category="technology" />
+      </>
+    );
+  }
+
+  const Stack = createNativeStackNavigator();
+
   return (
     <NativeBaseProvider>
       <NavigationContainer>
@@ -87,5 +93,4 @@ function App() {
     </NativeBaseProvider>
   );
 }
-
 export default App;
