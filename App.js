@@ -20,10 +20,12 @@ function App() {
       <View>
         <Button children="Home" onPress={() => navigation.push("Home")} />
         <Button children="Business" onPress={() => navigation.navigate("Business")} />
-        <Button children="Healthscience" onPress={() => navigation.navigate("Healthscience")} />
+        <Button children="Science" onPress={() => navigation.navigate("Science")} />
+        <Button children="Health" onPress={() => navigation.navigate("Health")} />
         <Button children="Sports" onPress={() => navigation.navigate("Sports")} />
         <Button children="Technology" onPress={() => navigation.navigate("Technology")} />
-        <News apikey={apikey} country={country} category="general" key={"general"} changeCounty={changeCounty} pageSize={pageSize} />
+        <Button children="Entertainment" onPress={() => navigation.push("Entertainment")} />
+        <News apikey={apikey} country={country} category="general" changeCounty={changeCounty} pageSize={pageSize} />
       </View>
     );
   }
@@ -32,22 +34,26 @@ function App() {
       <View>
         <Button children="Home" onPress={() => navigation.navigate("Home")} />
         <Button children="Business" onPress={() => navigation.push("Business")} />
-        <Button children="Healthscience" onPress={() => navigation.navigate("Healthscience")} />
+        <Button children="Science" onPress={() => navigation.navigate("Science")} />
+        <Button children="Health" onPress={() => navigation.navigate("Health")} />
         <Button children="Sports" onPress={() => navigation.navigate("Sports")} />
         <Button children="Technology" onPress={() => navigation.navigate("Technology")} />
+        <Button children="Entertainment" onPress={() => navigation.navigate("Entertainment")} />
         <News apikey={apikey} country={country} category="business" pageSize={pageSize} />
       </View>
     );
   }
-  function HealthscienceScreen({ navigation }) {
+  function ScienceScreen({ navigation }) {
     return (
       <View>
         <Button children="Home" onPress={() => navigation.navigate("Home")} />
         <Button children="Business" onPress={() => navigation.navigate("Business")} />
-        <Button children="Healthscience" onPress={() => navigation.push("Healthscience")} />
+        <Button children="Science" onPress={() => navigation.push("Science")} />
+        <Button children="Health" onPress={() => navigation.navigate("Health")} />
         <Button children="Sports" onPress={() => navigation.navigate("Sports")} />
         <Button children="Technology" onPress={() => navigation.navigate("Technology")} />
-        <News apikey={apikey} country={country} category="healthscience" pageSize={pageSize} />
+        <Button children="Entertainment" onPress={() => navigation.navigate("Entertainment")} />
+        <News apikey={apikey} country={country} category="science" pageSize={pageSize} />
       </View>
     );
   }
@@ -56,9 +62,11 @@ function App() {
       <View>
         <Button children="Home" onPress={() => navigation.navigate("Home")} />
         <Button children="Business" onPress={() => navigation.navigate("Business")} />
-        <Button children="Healthscience" onPress={() => navigation.navigate("Healthscience")} />
+        <Button children="Science" onPress={() => navigation.navigate("Science")} />
+        <Button children="Health" onPress={() => navigation.navigate("Health")} />
         <Button children="Sports" onPress={() => navigation.push("Sports")} />
         <Button children="Technology" onPress={() => navigation.navigate("Technology")} />
+        <Button children="Entertainment" onPress={() => navigation.navigate("Entertainment")} />
         <News apikey={apikey} country={country} category="sports" pageSize={pageSize} />
       </View>
     );
@@ -69,10 +77,40 @@ function App() {
       <View>
         <Button children="Home" onPress={() => navigation.navigate("Home")} />
         <Button children="Business" onPress={() => navigation.navigate("Business")} />
-        <Button children="Healthscience" onPress={() => navigation.navigate("Healthscience")} />
+        <Button children="Science" onPress={() => navigation.navigate("Science")} />
+        <Button children="Health" onPress={() => navigation.navigate("Health")} />
         <Button children="Sports" onPress={() => navigation.navigate("Sports")} />
         <Button children="Technology" onPress={() => navigation.push("Technology")} />
+        <Button children="Entertainment" onPress={() => navigation.navigate("Entertainment")} />
         <News apikey={apikey} country={country} category="technology" />
+      </View>
+    );
+  }
+  function HealthScreen({ navigation }) {
+    return (
+      <View>
+        <Button children="Home" onPress={() => navigation.navigate("Home")} />
+        <Button children="Business" onPress={() => navigation.navigate("Business")} />
+        <Button children="Science" onPress={() => navigation.navigate("Science")} />
+        <Button children="Health" onPress={() => navigation.push("Health")} />
+        <Button children="Sports" onPress={() => navigation.navigate("Sports")} />
+        <Button children="Technology" onPress={() => navigation.navigate("Technology")} />
+        <Button children="Entertainment" onPress={() => navigation.navigate("Entertainment")} />
+        <News apikey={apikey} country={country} category="health" />
+      </View>
+    );
+  }
+  function EntertainmentScreen({ navigation }) {
+    return (
+      <View>
+        <Button children="Home" onPress={() => navigation.navigate("Home")} />
+        <Button children="Business" onPress={() => navigation.navigate("Business")} />
+        <Button children="Science" onPress={() => navigation.navigate("Science")} />
+        <Button children="Health" onPress={() => navigation.navigate("Health")} />
+        <Button children="Sports" onPress={() => navigation.navigate("Sports")} />
+        <Button children="Technology" onPress={() => navigation.navigate("Technology")} />
+        <Button children="Entertainment" onPress={() => navigation.push("Entertainment")} />
+        <News apikey={apikey} country={country} category="entertainment" />
       </View>
     );
   }
@@ -85,9 +123,11 @@ function App() {
         <Stack.Navigator>
           <Stack.Screen name="Home" component={HomeScreen} />
           <Stack.Screen name="Business" component={BusinessScreen} />
-          <Stack.Screen name="Healthscience" component={HealthscienceScreen} />
+          <Stack.Screen name="Science" component={ScienceScreen} />
+          <Stack.Screen name="Health" component={HealthScreen} />
           <Stack.Screen name="Sports" component={SportsScreen} />
           <Stack.Screen name="Technology" component={TechnologyScreen} />
+          <Stack.Screen name="Entertainment" component={EntertainmentScreen} />
         </Stack.Navigator>
       </NavigationContainer>
     </NativeBaseProvider>
